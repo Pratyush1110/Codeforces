@@ -1,36 +1,33 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+#define int long long
+ 
 void solve(){
     int n;
     cin >> n;
-    vector<int>b(n);
+    vector<int> a(n);
+    for (int i = 0; i < n; i++){
+        cin >> a[i];
+    }
+ 
     int sum = 0;
-    for(int i=0; i<n; i++){
-        cin >> b[i];
-        sum += b[i];
-    }
-
-    if(sum==n){
-        cout << 1 << endl;
-        return;
-    }
-
-    sort(b.begin(), b.end());
-
-    int index = 1;
-    for(int i=0; i<n; i++){
-        if(b[i]!=0){
-            break;
-        }else{
-            index++;
+    int cnt_one = 0;
+ 
+    for (int i = 0; i < n; i++){
+        if (a[i] > 0){
+            cnt_one++;
         }
+        sum += a[i];
     }
-
-    cout << n - index + 1 << endl;
+ 
+    int sum2 = sum - cnt_one;
+    int sub = n - 1 - sum2;
+ 
+    cout << cnt_one - max(0ll, sub) << '\n';
 }
 
-int main(){
+int32_t main(){
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
     
